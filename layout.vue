@@ -69,6 +69,7 @@
                             <template v-if="$store.state.session.account.uuid">
                                 <nuxt-link class="dropdown-item" :to="contribution_link($store.state.session.account.uuid)">내 문서 기여 목록</nuxt-link>
                                 <nuxt-link class="dropdown-item" :to="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</nuxt-link>
+                                <nuxt-link class="dropdown-item" :to="contribution_link_edit_request($store.state.session.account.uuid)">내 편집 요청 목록</nuxt-link>
                                 <div class="dropdown-divider"></div>
                             </template>
                             <nuxt-link v-if="$store.state.session.account.type === 1" :to="{path:'/member/logout',query:{redirect:$route.fullPath}}" class="dropdown-item">로그아웃</nuxt-link>
@@ -99,7 +100,7 @@
             </div>
             <div class="container-fluid liberty-content">
                 <div v-if="$store.state.config['wiki.sitenotice']" id="site-notice" class="notification">
-                    <span class="label label-danger" v-html="$store.state.config['wiki.sitenotice']" />
+                    <span class="label" v-html="$store.state.config['wiki.sitenotice']" />
                 </div>
                 <div class="liberty-content-header">
                     <content-tool @onClickEditBtn="showEditMessage" />
